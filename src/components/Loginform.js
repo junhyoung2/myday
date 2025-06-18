@@ -12,8 +12,9 @@ const Loginform = ({ onLogin }) => {
     };
 
     return (
+        <div className="main">
         <form onSubmit={handleSubmit}>
-            <h2>당신의 이름을 입력해주세요.</h2>
+            <h2>이름을 입력해주세요.</h2>
             <input
                 type="text"
                 value={user}
@@ -22,6 +23,7 @@ const Loginform = ({ onLogin }) => {
             />
             <button type="submit">입장하기</button>
         </form>
+        </div>
     );
 };
 

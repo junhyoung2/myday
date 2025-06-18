@@ -1,3 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap");
+
+// 전체 화면 고정 및 스크롤 방지
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,10 +18,17 @@ body {
     font-size: 16px;
     line-height: 1.6;
     min-height: 100vh;
+    height: 100vh;
+    font-family: "Noto Sans KR", sans-serif;
+    background: #222;
 }
 
 .app {
-    width: 100%;
+    background-image: url(./images/img-4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -19,20 +36,96 @@ body {
     align-items: center;
     padding: clamp(1rem, 5vw, 3rem);
     gap: clamp(1.5rem, 4vw, 3rem);
+   
 }
 
-h2 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+// 로그인/메인 페이지 공통
+.main, .logout {
+    width: 100%;
+    max-width: 480px;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: none;
+  
+}
+
+.main h2{
+    display: block;
+    width: 100%;
+    font-size: clamp(0.8rem, 2.5vw, 1.5rem);
     text-align: center;
     margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #eee;
+    border-radius: 3rem;
+    padding: 1rem;
 }
-
+.logout > h2 {
+ display: block;
+    width: 100%;
+    font-size: clamp(0.8rem, 2.5vw, 1.5rem);
+    text-align: center;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #eee;
+    border-radius: 3rem;
+    padding: 1rem;
+}
+button.logout {
+    position: absolute;
+    right: clamp(10px, 5vw, 40px);
+    top: clamp(10px, 5vw, 40px);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: none;
+    color: #222;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 0.8rem;      /* 더 작게 */
+    padding: 0.3rem 0.8rem;     /* 더 작게 */
+    min-width: unset;           /* 최소 너비 해제 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background 0.2s;
+    cursor: pointer;
+}
+button.logout:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+.work button{
+     background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: none;
+    color: #222;
+    font-size: 0.9rem;
+    font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background 0.2s;
+    cursor: pointer;
+}
+.work button:hover{
+     background: rgba(255, 255, 255, 0.4);
+}
 .time {
     margin-top: clamp(1rem, 3vw, 2rem);
-    font-size: clamp(2.5rem, 10vw, 15rem);
+    font-size: clamp(1.5rem, 6vw, 10rem);
     font-weight: 700;
     text-align: center;
     line-height: 1.2;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #eee;
+    border-radius: 2rem;
+    padding: 1rem;
 }
 
 form {
@@ -48,33 +141,145 @@ input {
     width: 100%;
     padding: clamp(0.8rem, 2vw, 1rem);
     font-size: clamp(1rem, 2.5vw, 1.2rem);
-    border: 2px solid #ddd;
-    border-radius: 0.5rem;
-}
-
-button {
-    
-    width: 100%;
-    padding: 0.8rem 1.2rem;
-    font-size: 1.3rem; 
-    background: #007bff;
-    color: white;
     border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    
-    &:hover {
-        background: #0056b3;
-        transform: scale(1.3);
-    }
+    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    color: #eee;
+    outline: none;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+input:focus {
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
+.main button {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: none;
+    color: #222;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 2rem;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background 0.2s;
+    cursor: pointer;
+}
+.main > button {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+// 명언
 .ment {
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+    margin-top: 0; 
     margin-top: clamp(1rem, 3vw, 2rem);
     text-align: center;
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-size: clamp(0.8rem, 2vw, 1.4rem);
     line-height: 1.4;
     white-space: pre-line;
+    border: none;
+    border-radius: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    color: #eee;
+}
+
+// 날씨
+.weather {
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    color: #eee;
+    padding: 2rem;
+    min-width: 220px;
+    min-height: 120px;
+  
+}
+.weather > h3 {
+    font-size: 1.5rem;
+}
+
+// 할 일 리스트
+.list {
+    position: absolute;
+    left: clamp(10px, 5vw, 40px);
+    bottom: clamp(10px, 5vw, 40px);
+    width: min(90vw, 400px);
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    background: rgba(255,255,255,0.15);
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 4vw, 1.5rem);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: #eee;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+.list li:last-child {
+    border-bottom: none;
+}
+
+.list input[type="checkbox"] {
+    margin-right: clamp(0.5rem, 2vw, 1rem);
+    accent-color: #fff;
+}
+
+.list button {
+    padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.8rem, 2vw, 1rem);
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    border-radius: 1rem;
+    background: rgba(255,255,255,0.3);
+    color: #222;
+}
+
+// 할 일 입력 영역
+.work {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background: none;
+}
+
+// 기타 텍스트
+p {
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    color: #eee;
+    padding: 1rem 2rem;
+    margin: 1rem 0;
 }

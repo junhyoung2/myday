@@ -4,6 +4,9 @@ import Loginform from "./components/Loginform";
 import Time from "./components/Time";
 import Mainpage from "./components/Mainpage";
 
+import bgIMG from './images/img-3.jpg';
+import Weather from "./components/Weather";
+
 const App = () => {
     const USER_KEY = "user_name";
     const [user, setUser] = useState("");
@@ -22,8 +25,12 @@ const App = () => {
       setUser('');
     }
     return (
-        <div className="app">
-            <Time />
+      <div className="app">
+    {/* <img src="./images/img-1.jpg" alt="이미지1" /> */}
+   {/* <img src={`${process.env.PUBLIC_URL}/images/img-1.jpg`} alt="이미지1" /> */}
+   {/* <img src={bgIMG} alt="이미지 3"/> */}
+   <Weather/>
+    <Time />
             {user ? (
                 <Mainpage user={user} onLogout={handleLogout}/>
             ) : (

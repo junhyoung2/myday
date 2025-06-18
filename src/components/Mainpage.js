@@ -37,7 +37,7 @@ const Mainpage = ({ user, onLogout }) => {
     return (
         <div>
             {/* 홍길동 님 반가워요 */}
-            <h2>{user}님, 반가워요.</h2>
+            <h2 className="hi">{user}님, 반가워요.</h2>
             <button className="logout" onClick={onLogout}>로그아웃</button>
             <Quote />
             <TodoForm onAdd={addTodo} />

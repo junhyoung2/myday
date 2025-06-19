@@ -1,38 +1,47 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.scss";
 import Loginform from "./components/Loginform";
 import Time from "./components/Time";
 import Mainpage from "./components/Mainpage";
-
-import bgIMG from './images/img-3.jpg';
 import Weather from "./components/Weather";
+import Theme from "./components/Theme";
 
 const App = () => {
     const USER_KEY = "user_name";
+    const THEME_KEY = "is_dark_mode";
     const [user, setUser] = useState("");
+    const [isDark, setIsDark] = useState(() => {
+        const savedTheme = localStorage.getItem(THEME_KEY);
+        return savedTheme ? JSON.parse(savedTheme) : false;
+    });
     useEffect(() => {
         const saved = localStorage.getItem(USER_KEY);
         if (saved) {
             setUser(saved);
         }
-    });
+    }, []);
+    useEffect(() => {
+        localStorage.setItem(THEME_KEY, JSON.stringify(isDark));
+        document.body.classList.toggle("dark-mode", isDark);
+    }, [isDark]);
+    const handleThemeChange = () => {
+        setIsDark((prev) => !prev);
+    };
     const handleLogin = (data) => {
         localStorage.setItem(USER_KEY, data);
         setUser(data);
     };
-    const handleLogout =()=>{
-      localStorage.removeItem(USER_KEY);
-      setUser('');
-    }
+    const handleLogout = () => {
+        localStorage.removeItem(USER_KEY);
+        setUser("");
+    };
     return (
-      <div className="app">
-    {/* <img src="./images/img-1.jpg" alt="이미지1" /> */}
-   {/* <img src={`${process.env.PUBLIC_URL}/images/img-1.jpg`} alt="이미지1" /> */}
-   {/* <img src={bgIMG} alt="이미지 3"/> */}
-   <Weather/>
-    <Time />
+        <div className={`app ${isDark ? "dark-mode" : ""}`}>
+            <Theme isDark={isDark} onThemeChange={handleThemeChange} />
+            <Weather />
+            <Time />
             {user ? (
-                <Mainpage user={user} onLogout={handleLogout}/>
+                <Mainpage user={user} onLogout={handleLogout} />
             ) : (
                 <Loginform onLogin={handleLogin} />
             )}

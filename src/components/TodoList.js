@@ -6,13 +6,17 @@ const TodoList = ({ todos, onDelete, onToggle }) => {
         <ul className="list">
             {todos.map((item) => {
                 return (
-                    <li key={item.id}>
-                        <input
-                            type="checkbox"
-                            onChange={() => onToggle(item.id)}
-                            checked={item.done}
-                        />
+                    <li className="list-item" key={item.id}>
+                        <span className="checkbox-wrapper">
+                            <input
+                                className="list-checkbox"
+                                type="checkbox"
+                                onChange={() => onToggle(item.id)}
+                                checked={item.done}
+                            />
+                        </span>
                         <span
+                            className="list-text"
                             style={{
                                 textDecoration: item.done
                                     ? "line-through"
@@ -22,6 +26,7 @@ const TodoList = ({ todos, onDelete, onToggle }) => {
                             {item.todo}
                         </span>
                         <button
+                            className="list-delete"
                             onClick={() => {
                                 onDelete(item.id);
                             }}

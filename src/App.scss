@@ -1,7 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap");
 
+// 변수 정의 추가
+$color-red: #e74c3c;
+$color-white: #fff;
+$color-black: #222;
+$color-text: #eee;
+
+// 믹스인 정의
+@mixin glass-effect {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+@mixin button-base {
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    @include glass-effect;
+    &:hover {
+        background: rgba(255, 255, 255, 0.4);
+    }
+}
+
 // 전체 화면 고정 및 스크롤 방지
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -16,19 +41,17 @@ html, body {
 body {
     font-size: 16px;
     line-height: 1.6;
-    min-height: 100vh;
     height: 100vh;
     font-family: "Noto Sans KR", sans-serif;
     background: #222;
 }
 
 .app {
-    background-image: url(./images/img-4.jpg);
+    background-image: url(./images/img-1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
     height: 100vh;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,14 +62,14 @@ body {
 }
 
 // 로그인/메인 페이지 공통
-.main, .logout {
+.main,
+.logout {
     width: 100%;
     max-width: 480px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background: none;
     position: relative;
 }
 
@@ -56,92 +79,55 @@ body {
     font-weight: 700;
     text-align: center;
     margin: 2rem 0 1.5rem 0;
-    color: #333;
-    background: rgba(255,255,255,0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    color: #eee;
     border-radius: 2rem;
     padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    @include glass-effect;
 }
 
-.main h2, .logout > h2 {
+.main h2,
+.logout > h2 {
     display: block;
     width: 100%;
     font-size: clamp(0.8rem, 2.5vw, 1.5rem);
     text-align: center;
     margin-bottom: 1rem;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     color: #eee;
     border-radius: 3rem;
     padding: 1rem;
+    @include glass-effect;
+}
+
+button.logout,
+.work button {
+    width: 160px;
+    position: absolute;
+    right: clamp(10px, 5vw, 40px);
+    color: #eee;
+    font-size: 2rem;
+    font-weight: bolder;
+    border-radius: 1.2rem;
+    padding: 0.3rem 0.8rem;
+    text-align: center;
+    @include button-base;
 }
 
 button.logout {
-    width: 100px;
-    position: absolute;
-    right: clamp(10px, 5vw, 40px);
     top: clamp(10px, 5vw, 40px);
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: none;
-    color: #222;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 1.2rem;
-    padding: 0.3rem 0.8rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: background 0.2s;
-    cursor: pointer;
-    text-align: center;
-}
-button.logout:hover {
-    background: rgba(255, 255, 255, 0.4);
-}
-
-.main button {
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: none;
-    color: #222;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border-radius: 2rem;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: background 0.2s;
-    cursor: pointer;
-}
-
-.main button:hover {
-    background: rgba(255, 255, 255, 0.4);
 }
 
 .work button {
-    width: 100px;
-    position: absolute;
-    right: clamp(10px, 5vw, 40px);
     top: clamp(20px, 10vw, 80px);
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: none;
-    color: #222;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 1.2rem;
-    padding: 0.3rem 0.8rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: background 0.2s;
-    cursor: pointer;
-    text-align: center;
+    margin-top: 2rem;
 }
-.work button:hover {
-    background: rgba(255, 255, 255, 0.4);
+
+.main button {
+    color: #eee;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    border-radius: 2rem;
+    padding: 1rem;
+    @include button-base;
 }
 
 .time {
@@ -150,12 +136,10 @@ button.logout:hover {
     font-weight: 700;
     text-align: center;
     line-height: 1.2;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     color: #eee;
     border-radius: 2rem;
     padding: 1rem;
+    @include glass-effect;
 }
 
 form {
@@ -175,23 +159,27 @@ input {
     font-size: clamp(1rem, 2.5vw, 1.2rem);
     border: none;
     border-radius: 2rem;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    font-size: 1.5rem;
     color: #eee;
     outline: none;
     transition: background 0.2s, box-shadow 0.2s;
-}
-input:focus {
-    background: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    @include glass-effect;
+
+    &::placeholder {
+        color: #eee;
+        opacity: 0.7;
+    }
+
+    &:focus {
+        background: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
 }
 
 // 명언
 .ment {
     position: absolute;
-    right: 40px;
+    left: 40px;
     bottom: 40px;
     text-align: center;
     font-size: clamp(0.8rem, 2vw, 1.4rem);
@@ -200,11 +188,8 @@ input:focus {
     border: none;
     border-radius: 2rem;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     color: #eee;
+    @include glass-effect;
 }
 
 // 날씨
@@ -218,53 +203,113 @@ input:focus {
     align-items: center;
     border: none;
     border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     color: #eee;
     padding: 1rem;
     min-width: 220px;
     min-height: 120px;
-}
-.weather > h3 {
-    font-size: 1.5rem;
+    @include glass-effect;
+
+    > h3 {
+        font-size: 1.5rem;
+    }
 }
 
 // 할 일 리스트
 .list {
+    max-height: 40vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
     position: fixed;
-    left: clamp(10px, 5vw, 40px);
+    right: clamp(10px, 5vw, 40px);
     bottom: clamp(10px, 5vw, 40px);
-    width: 200px;
+    width: 400px;
     list-style: none;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 0.5rem 0;
+
+    // 스크롤바 스타일링
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        margin: 0.5rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    }
 }
 
-.list li {
+.list-item {
     display: flex;
     align-items: center;
-    justify-content: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.2rem 1rem;
+    min-height: 1.5rem;
+    &:last-child {
+        border-bottom: none;
+    }
 }
 
-.list input[type="checkbox"] {
-    margin-right: 0.7rem;
-    accent-color: #fff;
-    width: 1.1rem;
-    height: 1.1rem;
+.checkbox-wrapper {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
     flex-shrink: 0;
-    cursor: pointer;
-}
-
-.list button {
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0.4rem;
 }
 
-.list li:last-child {
+.list-checkbox {
+    width: 1.2rem;
+    height: 1.2rem;
+    accent-color: #222;
+    cursor: pointer;
+    opacity: 0.7;
+    border-radius: 50%;
+}
+
+.list-text {
+    color: #eee;
+    word-break: break-all;
+    font-size: 1.5rem;
+    flex: 1;
+    padding-left: 0.1rem;
+    z-index: 1;
+}
+
+.list-delete {
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    color: #e74c3c;
+    font-size: 1.1rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    padding: 0.3rem 1rem;
+    font-weight: bold;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    &:hover {
+        background: #e74c3c;
+        color: #fff;
+    }
 }
 
 // 할 일 입력 영역
@@ -272,22 +317,79 @@ input:focus {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
-    background: none;
 }
-
 // 기타 텍스트
 p {
+    font-size: 1.5rem;
     justify-content: center;
     flex-direction: column;
     display: flex;
     align-items: center;
     border: none;
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 2rem;
     color: #eee;
-    padding: 1rem 2rem;
-    margin: 1rem 0;
+    padding: 1rem 1rem;
+    @include glass-effect;
+}
+
+// ...existing code...
+
+// 테마 버튼 스타일
+.theme-button {
+    width: 160px;
+    margin-top: 2rem;
+    position: absolute;
+    right: clamp(10px, 5vw, 40px);
+    top: clamp(140px, 15vw, 160px);
+    color: #eee;
+    font-size: 2rem;
+    font-weight: bolder;
+    border-radius: 1.2rem;
+    padding: 0.3rem 0.8rem;
+    text-align: center;
+    @include button-base;
+}
+
+// 다크모드 스타일
+.dark-mode {
+    &.app {
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0.7;
+    }
+    .hi,
+    .main h2,
+    .logout > h2,
+    .weather,
+    .ment,
+    .time,
+   .main button,
+    p {
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0.7;
+    }
+
+    input {
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0.7;
+        color: #fff;
+
+        &::placeholder {
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0.7;
+        }
+    }
+
+    .list {
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0.7;
+    }
+
+    .list-delete {
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0.7;
+
+        &:hover {
+            background: $color-red;
+        }
+    }
 }

@@ -4,7 +4,7 @@ import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
 const Mainpage = ({ user, onLogout }) => {
-    const TODOS_KEY = "todos";
+   const TODOS_KEY = `todos_${user}`;
     const [todos, setTodos] = useState([]);
     //처음에 localstrage에 저장된 todos값이 있으면 읽어와서 설정
     useEffect(() => {
@@ -36,9 +36,8 @@ const Mainpage = ({ user, onLogout }) => {
     }
     return (
         <div>
-            {/* 홍길동 님 반가워요 */}
             <h2 className="hi">{user}님, 반가워요.</h2>
-            <button className="logout" onClick={onLogout}>나가기</button>
+            <button className="logout" onClick={onLogout}>EXIT</button>
             <Quote />
             <TodoForm onAdd={addTodo} />
             <TodoList todos={todos} onDelete={deleteTodo} onToggle={toggleTodo} />

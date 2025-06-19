@@ -21,6 +21,7 @@ $color-text: #eee;
     @include glass-effect;
     &:hover {
         background: rgba(255, 255, 255, 0.4);
+        scale: 1.2;
     }
 }
 
@@ -83,6 +84,10 @@ body {
     border-radius: 2rem;
     padding: 1rem;
     @include glass-effect;
+    cursor: pointer;
+}
+.hi:hover {
+    scale: 1.2;
 }
 
 .main h2,
@@ -96,6 +101,10 @@ body {
     border-radius: 3rem;
     padding: 1rem;
     @include glass-effect;
+    cursor: pointer;
+}
+.main h2:hover {
+    scale: 1.2;
 }
 
 button.logout,
@@ -140,6 +149,10 @@ button.logout {
     border-radius: 2rem;
     padding: 1rem;
     @include glass-effect;
+    cursor: pointer;
+}
+.time:hover {
+    scale: 1.2;
 }
 
 form {
@@ -164,6 +177,7 @@ input {
     outline: none;
     transition: background 0.2s, box-shadow 0.2s;
     @include glass-effect;
+    cursor: pointer;
 
     &::placeholder {
         color: #eee;
@@ -174,6 +188,9 @@ input {
         background: rgba(255, 255, 255, 0.4);
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     }
+}
+input:hover {
+    scale: 1.2;
 }
 
 // 명언
@@ -190,6 +207,10 @@ input {
     padding: 1rem;
     color: #eee;
     @include glass-effect;
+    cursor: pointer;
+}
+.ment:hover {
+    scale: 1.2;
 }
 
 // 날씨
@@ -208,10 +229,14 @@ input {
     min-width: 220px;
     min-height: 120px;
     @include glass-effect;
+    cursor: pointer;
 
     > h3 {
         font-size: 1.5rem;
     }
+}
+.weather:hover {
+    scale: 1.2;
 }
 
 // 할 일 리스트
@@ -228,6 +253,7 @@ input {
     border-radius: 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     padding: 0.5rem 0;
+    cursor: pointer;
 
     // 스크롤바 스타일링
     &::-webkit-scrollbar {
@@ -246,6 +272,7 @@ input {
 
         &:hover {
             background: rgba(255, 255, 255, 0.5);
+            scale: 1.2;
         }
     }
 }
@@ -309,6 +336,7 @@ input {
     &:hover {
         background: #e74c3c;
         color: #fff;
+        scale: 1.2;
     }
 }
 
@@ -330,6 +358,10 @@ p {
     color: #eee;
     padding: 1rem 1rem;
     @include glass-effect;
+    cursor: pointer;
+}
+p:hover {
+    scale: 1.2;
 }
 
 // ...existing code...
@@ -362,7 +394,10 @@ p {
     .weather,
     .ment,
     .time,
-   .main button,
+    .main button,
+    button.logout,
+    .work button,
+    .theme-button,
     p {
         background-color: rgba(0, 0, 0, 0.5);
         opacity: 0.7;
@@ -390,6 +425,7 @@ p {
 
         &:hover {
             background: $color-red;
+            scale: 1.2;
         }
     }
 }

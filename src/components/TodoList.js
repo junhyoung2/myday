@@ -31,7 +31,7 @@ const TodoList = ({ todos, onDelete, onToggle }) => {
                                 onDelete(item.id);
                             }}
                         >
-                            삭제
+                            Delete
                         </button>
                     </li>
                 );

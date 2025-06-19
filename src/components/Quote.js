@@ -14,16 +14,12 @@ const quotes = [
 ];
 
 
-
-
 const Quote = () => {
     const [Quote,setQuote]=useState('');
     useEffect(()=>{
         const random =Math.floor(Math.random()*quotes.length);
        setQuote(quotes[random]);
     },[]);
-    //랜덤하게 명언 추출
-    // Math.random();
     return (
         <div className="ment">
             오늘의 명언 : "{Quote}"

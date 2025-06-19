@@ -22,7 +22,7 @@ const TodoForm = ({ onAdd }) => {
                 }}
                 placeholder="할 일을 입력하세요."
             />
-            <button type="submit">추가</button>
+            <button type="submit">ADD</button>
         </form>
         </div>
     );
